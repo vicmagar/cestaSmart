@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesta Smart - Registro y Puntos</title>
+</head>
+<body>
+    <h1>Registro de Usuarios</h1>
+    <form id="registroUsuarioForm">
+        <label for="nomUsuario">Nombre del Usuario:</label>
+        <input type="text" id="nomUsuario" name="nomUsuario" required>
+        <label for="rfid_code">Código RFID:</label>
+        <input type="text" id="rfid_code" name="rfid_code" required>
+        <button type="submit">Registrar Usuario</button>
+    </form>
+
+    <h1>Listado de Puntos por Usuario</h1>
+    <button id="listarPuntosBtn">Mostrar Puntos</button>
+    <table id="tablaPuntos">
+        <thead>
+            <tr>
+                <th>ID Usuario</th>
+                <th>Nombre</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.getElementById('registroUsuarioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nomUsuario = document.getElementById('nomUsuario').value;
+            const rfid_code = document.getElementById('rfid_code').value;
+
+            fetch('/api/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nomUsuario, rfid_code })
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message));
+        });
+
+        document.getElementById('listarPuntosBtn').addEventListener('click', function() {
+            fetch('/api/usuarios/puntos')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('tablaPuntos').querySelector('tbody');
+                tbody.innerHTML = '';
+                data.forEach(usuario => {
+                    const row = `<tr>
+                        <td>${usuario.idUsuario}</td>
+                        <td>${usuario.nomUsuario}</td>
+                        <td>${usuario.puntos}</td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

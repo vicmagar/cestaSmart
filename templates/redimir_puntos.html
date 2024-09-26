@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Redimir Puntos</h2>
+<div class="productos">
+    {% for producto in productos %}
+    <div class="producto">
+        <img src="{{ url_for('static', filename='img/' + producto.imagen) }}" alt="{{ producto.nombre }}">
+        <h3>{{ producto.nombre }}</h3>
+        <p>Puntos: {{ producto.puntos }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

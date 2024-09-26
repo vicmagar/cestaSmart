@@ -1,0 +1,41 @@
+/* Barra de menú */
+.navbar {
+    background-color: #4CAF50;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar ul li {
+    float: left;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background-color: #3e8e41;
+}
+
+/* Contenido principal */
+.container {
+    padding: 20px;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}

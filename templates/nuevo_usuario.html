@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Registrar Nuevo Usuario</h2>
+<form method="POST" action="{{ url_for('nuevo_usuario') }}">
+    <label for="nombre">Nombre del Usuario:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="rfid">Código RFID:</label>
+    <input type="text" id="rfid" name="rfid" required><br><br>
+
+    <button type="submit">Registrar</button>
+</form>
+{% endblock %}

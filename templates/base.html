@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesta Smart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a href="{{ url_for('nuevo_usuario') }}">Nuevo Usuario</a></li>
+            <li><a href="{{ url_for('consultar_puntos') }}">Consultar Puntos</a></li>
+            <li><a href="{{ url_for('redimir_puntos') }}">Redimir Puntos</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        {% block content %}
+        <!-- Este bloque será sobrescrito -->
+        {% endblock %}
+    </div>
+</body>
+</html>
